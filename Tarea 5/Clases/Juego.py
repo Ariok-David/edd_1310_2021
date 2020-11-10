@@ -44,13 +44,17 @@ class  JuegoDeLaVida:
         vecinos_vivos = 0
         for r in range(row-1, row+2):
             for c in range(col-1, col+2):
-                try:
-                    if self.__grid.get_item(r, c) == self.CELULA_VIVA:
-                        vecinos_vivos += self.CELULA_VIVA
-                except Exception as e:
-                    vecinos_vivos += self.CELULA_MUERTA
-                #if self.__grid.get_item(check_rows(r,self.__grid.get_row_size()), check_cols(c, self.__grid.get_col_size())) == self.CELULA_VIVA:
-                    #vecinos_vivos += self.CELULA_VIVA
+                
+                #Version normal donde el unico espacio existente es el definido por el usuario y si esta en esquina no cuenta espacios que no estan en el grid.
+                #try:
+                    #if self.__grid.get_item(r, c) == self.CELULA_VIVA:
+                        #vecinos_vivos += self.CELULA_VIVA
+                #except Exception as e:
+                    #vecinos_vivos += self.CELULA_MUERTA
+
+                #Version donde el grid y conteo de celulas funciona como pacaman si te vas al limite izquierdo te regresa o cuenta del inicio del limite derecho.
+                if self.__grid.get_item(check_rows(r,self.__grid.get_row_size()), check_cols(c, self.__grid.get_col_size())) == self.CELULA_VIVA:
+                    vecinos_vivos += self.CELULA_VIVA
         if self.__grid.get_item(row, col) == self.CELULA_VIVA:
             vecinos_vivos = vecinos_vivos - 1
         return vecinos_vivos
