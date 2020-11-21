@@ -60,3 +60,17 @@ class LinkedList:
         else:
             pass
         return dato
+
+    def add_before(self, node, value):
+        try:
+            curr_node = self.__head
+            while curr_node.siguiente != None and curr_node.siguiente.data != node:
+                curr_node = curr_node.siguiente
+                sig = curr_node.siguiente
+                print(f"Estoy en : {curr_node.data}")
+            if curr_node.siguiente.data == node:
+                sig = curr_node.siguiente
+                nuevo = Nodo(value, sig)
+                curr_node.siguiente = nuevo
+        except Exception as e:
+            print("Dato no encontrado")
