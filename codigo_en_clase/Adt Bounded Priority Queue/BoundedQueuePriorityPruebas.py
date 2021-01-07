@@ -7,6 +7,6 @@ mecanicos = {"prioridad": 4, "descripcion":"Mecanicos", "Personas":["Diana T", "
 
 cpa = BoundedPriorityQueue(7)
 cpa.enqueue(maestres['prioridad'], maestres)
-cpa.enqueue(maestres['prioridad'], ninos)
-cpa.enqueue(maestres['prioridad'], mecanicos)
+cpa.enqueue(ninos['prioridad'], ninos)
+cpa.enqueue(mecanicos['prioridad'], mecanicos)
 cpa.to_string()
