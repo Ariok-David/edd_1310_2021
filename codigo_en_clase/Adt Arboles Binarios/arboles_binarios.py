@@ -84,6 +84,53 @@ class BinarySearchTree:
             return self.__search(nodo.right, value)
 
     def remove(self, value):
+        #Editado hoy 26 de Enero de 2021.
+        if self.__root == None:
+            print("Nada que eliminar")
+        else:
+            self.__remove(None, None, self.__root, value)
+
+    def __remove(self, padre_hi, padre_hd, actual, value):
+        if actual == None:
+            print("Caso Base")
+            return None
+        elif actual.data == value:# Caso base
+            print("Encontrado:", actual.data)
+            #Caso 1 : hoja
+            if actual.left == None and actual.right == None:
+                if padre_hi != None:
+                    padre_hi.left = None
+                else:
+                    padre_hd.right = None
+            #Caso 2 : Con un hijo
+            if (actual.left != None and actual.right == None) or (actual.left == None and actual.right != None):
+                print("Es un nodo con un hijo")
+                if actual.left != None:
+                    actual.data = actual.left.data
+                    actual.left = None
+                else:
+                    actual.data = actual.right.data
+                    actual.right = None
+            #Caso 3 : Con los dos hijos
+
+        elif value < actual.data:
+            print("Buscar a la izquierda")
+            self.__remove(actual, None, actual.left, value)
+        else:
+            print("Buscar a la derecha")
+            self.__remove(None, actual, actual.right, value)
+
+            #return actual
+
+
+
+
+
+
+
+
+        #Version anterior de remove
+        """
         encontrado = self.search(value)
         #caso 1
         if encontrado.left == None and encontrado.right == None:
@@ -92,3 +139,4 @@ class BinarySearchTree:
         #caso 2
         elif (encontrado.left != None and encontrado.right == None) or (encontrado.left == None and encontrado.right != None):
             print("A eliminar", encontrado.data)
+        """
