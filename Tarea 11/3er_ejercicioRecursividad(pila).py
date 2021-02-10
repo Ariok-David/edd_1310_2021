@@ -17,7 +17,7 @@ def pop_stack(pila, num, p_ayuda):
 def find_midle_value(pila):
     p = Stack()
     c = (pila.length() / 2)
-    pop_stack(pila, int(c))
+    pop_stack(pila, int(c),p)
 
 
 def main():
